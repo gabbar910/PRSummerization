@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PRSummerization")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a99cbc4817e4c0efae187a06986e6aef4d70658")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf03725098169ab2f61363f7f60b1701c23f1ec1")]
 [assembly: System.Reflection.AssemblyProductAttribute("PRSummerization")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PRSummerization")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
