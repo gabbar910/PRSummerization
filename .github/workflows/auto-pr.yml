@@ -1,4 +1,4 @@
-name: Auto PR on Feature Push with AI Summary
+name: Auto PR on Feature Push
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 jobs:
   auto-create-pr:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -20,24 +19,14 @@ jobs:
     - name: Generate git diff
       run: |
         git diff origin/dev > changes.diff
-
-    - name: Install curl and jq
-      run: sudo apt-get update && sudo apt-get install -y curl jq
-
-    - name: Generate PR Summary using OpenAI
+        
+    - name: Generate PR Summary (AI)
+      id: summarize
       run: |
         DIFF_CONTENT=$(cat changes.diff | head -c 6000 | jq -Rs .)
-        curl https://api.openai.com/v1/chat/completions \
-          -s \
-          -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
-          -H "Content-Type: application/json" \
-          -d '{
-            "model": "gpt-4",
-            "messages": [
-              { "role": "system", "content": "You are an assistant that summarizes code changes for pull requests." },
-              { "role": "user", "content": '"$DIFF_CONTENT"' }
-            ]
-          }' | jq -r '.choices[0].message.content' > summary.md
+        echo "## 🔍 Summary" > summary.md
+        echo "Auto-generated summary goes here. $DIFF_CONTENT" >> summary.md
+        # Optional: Use curl or Python to call OpenAI/GPT API here
 
     - name: Install GitHub CLI
       run: |
