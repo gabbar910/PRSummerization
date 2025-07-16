@@ -1,0 +1,6 @@
+@PRSummerization_HostAddress = http://localhost:5032
+
+GET {{PRSummerization_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
